@@ -72,7 +72,7 @@ This is the name of the template. Every template has a unique name. This is the 
 
 ```yaml
 defaults:
-	rating: 3
+  rating: 3
 ```
 
 The `defaults` section defines default values for each of the variables used in the Liquid templates. MFT will prompt you for each variable anyway, but it will pre-fill the value if you specify a default. That makes for quick entry.
