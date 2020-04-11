@@ -1,12 +1,19 @@
 # Here's a single template example. Just copy-paste to
-# templates.yaml, change the key, and adapt.
+# templates.yaml and adapt to your liking.
 #
 # The values for the directory, filename and contents are
 # all Liquid templates. You can use any variable you want.
-# When running the tool it will prompt you for all variables
-# it needs.
-
+# When running the tool it will prompt you for values for all
+# variables it needs.
+#
+# The 'day', 'month' and 'year' variables, if used, are
+# automatically set to today's date as default values.
+#
+# For other variables you can optionally define your own defaults,
+# as shown in the example below
 template:
+  defaults:
+    title: 'Default Title'
   directory: '~/Notes'
   filename: '{{title}}.md'
   contents: |
