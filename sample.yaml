@@ -1,0 +1,20 @@
+# Here's a single template example. Just copy-paste to
+# templates.yaml, change the key, and adapt.
+#
+# The values for the directory, filename and contents are
+# all Liquid templates. You can use any variable you want.
+# When running the tool it will prompt you for all variables
+# it needs.
+
+template:
+  directory: '~/Notes'
+  filename: '{{title}}.md'
+  contents: |
+    # {{title}}
+
+    ## Dates
+
+    - {{day}}-{{month}}-{{year}}
+
+    #Tag
+

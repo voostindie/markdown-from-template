@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
+
+Encoding::default_internal = Encoding::UTF_8
+Encoding::default_external = Encoding::UTF_8
+
+require 'mft'
+
+begin
+  MFT::Cli.new.run
+rescue StandardError => e
+  if e.message != 'exit' # There's probably a better way to do this...
+    puts e.message
+    exit(1)
+  end
+end

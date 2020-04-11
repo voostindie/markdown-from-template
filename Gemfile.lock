@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    liquid (4.0.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  liquid
+
+BUNDLED WITH
+   2.1.4
