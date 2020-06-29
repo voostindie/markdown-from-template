@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is a simple tool to create Markdown files at specific locations on your filesystem from [Liquid ](https://shopify.github.io/liquid/)templates. This tool prompts you for each variable in the used template, creates a file and opens it in your default Markdown editor.
+This is a simple tool to create Markdown files at specific locations on your filesystem from [Liquid](https://shopify.github.io/liquid/) templates. This tool prompts you for each variable in the used template, creates a file and opens it in your default Markdown editor.
 
 ## Prerequisites
 
