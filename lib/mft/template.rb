@@ -17,7 +17,7 @@ module MFT
     def extract_variables(templates)
       templates.map do |template|
         template.root.nodelist
-          .select { |n| n.is_a?(Liquid::Variable)}
+          .select { |n| n.is_a?(Liquid::Variable) }
           .select { |v| v.name.is_a?(Liquid::VariableLookup) }
           .map { |v| v.name.name }
       end.flatten.uniq
@@ -26,8 +26,7 @@ module MFT
     def render
       context = collect_values
       render_templates(context)
-      path = write_output
-      open_editor(path)
+      write_output
     end
 
     private
@@ -80,10 +79,6 @@ module MFT
           Zaru.sanitize!(p)
         end
       end.join('/'))
-    end
-
-    def open_editor(path)
-      system('open', path)
     end
   end
 end

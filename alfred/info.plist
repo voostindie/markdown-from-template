@@ -9,6 +9,19 @@
 	<key>connections</key>
 	<dict>
 		<key>895315D6-5799-4E64-832C-7A26230A2139</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</key>
 		<array/>
 		<key>FAE14E0D-4C51-4C2D-A529-4E193B0BCC01</key>
 		<array>
@@ -87,6 +100,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>obsidian://{query}</string>
+				<key>utf8</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -118,7 +150,14 @@
 			<key>note</key>
 			<string>Create Markdown from from specified template</string>
 			<key>xpos</key>
-			<integer>320</integer>
+			<integer>325</integer>
+			<key>ypos</key>
+			<integer>115</integer>
+		</dict>
+		<key>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</key>
+		<dict>
+			<key>xpos</key>
+			<integer>560</integer>
 			<key>ypos</key>
 			<integer>115</integer>
 		</dict>

@@ -41,7 +41,7 @@ module MFT
                 templates.keys.join(', ')
       end
 
-      Template.new(arguments[0], template).render
+      puts Template.new(arguments[0], template).render
     end
   end
 end
