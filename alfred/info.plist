@@ -8,11 +8,24 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
-		<key>895315D6-5799-4E64-832C-7A26230A2139</key>
+		<key>403316A4-EBF2-4693-BA80-AD840D755A3B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>895315D6-5799-4E64-832C-7A26230A2139</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>403316A4-EBF2-4693-BA80-AD840D755A3B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -140,11 +153,31 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.transform</string>
+			<key>uid</key>
+			<string>403316A4-EBF2-4693-BA80-AD840D755A3B</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>403316A4-EBF2-4693-BA80-AD840D755A3B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>545</integer>
+			<key>ypos</key>
+			<integer>145</integer>
+		</dict>
 		<key>895315D6-5799-4E64-832C-7A26230A2139</key>
 		<dict>
 			<key>note</key>
@@ -157,7 +190,7 @@
 		<key>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>560</integer>
+			<integer>700</integer>
 			<key>ypos</key>
 			<integer>115</integer>
 		</dict>

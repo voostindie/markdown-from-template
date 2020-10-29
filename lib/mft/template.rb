@@ -64,10 +64,11 @@ module MFT
       unless Dir.exist?(directory)
         raise "Directory doesn't exist: #{directory}"
       end
-      if File.exist?(path)
-        raise "File already exists: #{filename}"
+      if File.exist?(path) && File.size(path) > 0
+        $stderr.puts "File already exists: #{filename}"
+      else
+        IO.write(path, @renders[:contents])
       end
-      IO.write(path, @renders[:contents])
       path
     end
 
