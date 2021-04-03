@@ -8,7 +8,47 @@
 	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
-		<key>403316A4-EBF2-4693-BA80-AD840D755A3B</key>
+		<key>895315D6-5799-4E64-832C-7A26230A2139</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>C8CF71C1-82E4-4878-A076-E1D5078CB9E0</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</key>
+		<array/>
+		<key>C8CF71C1-82E4-4878-A076-E1D5078CB9E0</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>849CA7DB-ADC8-49C2-BA44-FF95D8784F3F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>sourceoutputuid</key>
+				<string>04DB953E-0D2C-40A6-8A99-F7B5F5E9A769</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>C993659F-D180-4311-ABC6-FCED2A17B87B</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>C993659F-D180-4311-ABC6-FCED2A17B87B</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -21,21 +61,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>895315D6-5799-4E64-832C-7A26230A2139</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>403316A4-EBF2-4693-BA80-AD840D755A3B</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</key>
-		<array/>
 		<key>FAE14E0D-4C51-4C2D-A529-4E193B0BCC01</key>
 		<array>
 			<dict>
@@ -63,10 +88,55 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>Template creation canceled!</string>
+				<key>title</key>
+				<string>Markdown from Template</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>849CA7DB-ADC8-49C2-BA44-FF95D8784F3F</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>PATH=$RUBY_PATH:$PATH
+../exe/mft "$*" 2&gt;/dev/null</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>895315D6-5799-4E64-832C-7A26230A2139</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>argumenttreatemptyqueryasnil</key>
 				<true/>
 				<key>argumenttrimmode</key>
@@ -113,12 +183,42 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>conditions</key>
+				<array>
+					<dict>
+						<key>inputstring</key>
+						<string></string>
+						<key>matchcasesensitive</key>
+						<false/>
+						<key>matchmode</key>
+						<integer>4</integer>
+						<key>matchstring</key>
+						<string>.*Unexpected output.*</string>
+						<key>outputlabel</key>
+						<string>no output / canceled</string>
+						<key>uid</key>
+						<string>04DB953E-0D2C-40A6-8A99-F7B5F5E9A769</string>
+					</dict>
+				</array>
+				<key>elselabel</key>
+				<string>file created</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.utility.conditional</string>
+			<key>uid</key>
+			<string>C8CF71C1-82E4-4878-A076-E1D5078CB9E0</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>browser</key>
 				<string></string>
 				<key>spaces</key>
 				<string></string>
 				<key>url</key>
-				<string>obsidian://{query}</string>
+				<string>obsidian://open?path={query}</string>
 				<key>utf8</key>
 				<false/>
 			</dict>
@@ -137,46 +237,32 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>PATH=$RUBY_PATH:$PATH
-../exe/mft $* 2&gt;/dev/null</string>
+				<string>print URI.escape ARGV[0].strip</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>2</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>895315D6-5799-4E64-832C-7A26230A2139</string>
+			<string>C993659F-D180-4311-ABC6-FCED2A17B87B</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.utility.transform</string>
-			<key>uid</key>
-			<string>403316A4-EBF2-4693-BA80-AD840D755A3B</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>403316A4-EBF2-4693-BA80-AD840D755A3B</key>
+		<key>849CA7DB-ADC8-49C2-BA44-FF95D8784F3F</key>
 		<dict>
 			<key>xpos</key>
-			<integer>545</integer>
+			<integer>730</integer>
 			<key>ypos</key>
-			<integer>145</integer>
+			<integer>100</integer>
 		</dict>
 		<key>895315D6-5799-4E64-832C-7A26230A2139</key>
 		<dict>
@@ -190,9 +276,23 @@
 		<key>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</key>
 		<dict>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>935</integer>
 			<key>ypos</key>
-			<integer>115</integer>
+			<integer>235</integer>
+		</dict>
+		<key>C8CF71C1-82E4-4878-A076-E1D5078CB9E0</key>
+		<dict>
+			<key>xpos</key>
+			<integer>500</integer>
+			<key>ypos</key>
+			<integer>135</integer>
+		</dict>
+		<key>C993659F-D180-4311-ABC6-FCED2A17B87B</key>
+		<dict>
+			<key>xpos</key>
+			<integer>730</integer>
+			<key>ypos</key>
+			<integer>235</integer>
 		</dict>
 		<key>FAE14E0D-4C51-4C2D-A529-4E193B0BCC01</key>
 		<dict>
