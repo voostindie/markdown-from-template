@@ -78,6 +78,19 @@ The `variables` section defines default values for each of the variables used in
 
 The variables `day`, `month` and `year` have automatic defaults, for today's date.
 
+### PRO TIP: Setting values from scripts
+
+If you really know what you're doing, you can set variable to the output of scripts. This offers a lot of flexibility, but also opens up Pandora's box, so be careful.
+
+To run a script, simply set it as the value of a variable, surrounded with backticks:
+
+```yaml
+variables:
+  rating: `echo $((1 + $RANDOM % 5))`
+```
+
+This will set the variable `rating` to, in this case, a random number from 1 to 5.
+
 ### Suppressing dialog boxes
 
 In some cases you have variables with default values that you don't want to be reminded of, you can suppress them. In that case MFT won't prompt you for them and the default value will be used as is.

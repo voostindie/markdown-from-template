@@ -35,11 +35,16 @@ module MFT
     def collect_values
       context = {}
       @variables.each do |variable|
-        if @suppress.include?(variable) && !@defaults[variable].nil?
-          context[variable] = @defaults[variable]
+        value = (@defaults[variable] || '').strip
+        if value.start_with?('`') && value.end_with?('`')
+          script = value[1...-1]
+          value = `#{script}`.strip
+        end
+        if @suppress.include?(variable) && !value.nil?
+          context[variable] = value
         else
           command = "osascript -e 'display dialog \"Enter #{variable}\" " +
-            "default answer \"#{@defaults[variable]}\" " +
+            "default answer \"#{value}\" " +
             "with title \"New #{@name}\"'"
           output = `#{command}`
           if output =~ /^button returned:OK, text returned:(.*)$/
