@@ -21,8 +21,19 @@
 				<false/>
 			</dict>
 		</array>
-		<key>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</key>
-		<array/>
+		<key>B0C07BCE-39D1-489D-8702-6C079ECD5E14</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1657EBDC-67A0-45D0-9C13-B7BEE19C66B3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>C8CF71C1-82E4-4878-A076-E1D5078CB9E0</key>
 		<array>
 			<dict>
@@ -39,20 +50,7 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
-				<string>C993659F-D180-4311-ABC6-FCED2A17B87B</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
-		<key>C993659F-D180-4311-ABC6-FCED2A17B87B</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</string>
+				<string>B0C07BCE-39D1-489D-8702-6C079ECD5E14</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -213,31 +211,14 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>obsidian://open?path={query}</string>
-				<key>utf8</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>script</key>
-				<string>print URI.escape ARGV[0].strip</string>
+				<string>require 'erb'
+path = ERB::Util.url_encode ARGV[0].strip
+print "obsidian://open?path=#{path}"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
@@ -248,7 +229,30 @@
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>C993659F-D180-4311-ABC6-FCED2A17B87B</string>
+			<string>B0C07BCE-39D1-489D-8702-6C079ECD5E14</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>open {query}</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1657EBDC-67A0-45D0-9C13-B7BEE19C66B3</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -257,6 +261,13 @@
 	<string></string>
 	<key>uidata</key>
 	<dict>
+		<key>1657EBDC-67A0-45D0-9C13-B7BEE19C66B3</key>
+		<dict>
+			<key>xpos</key>
+			<integer>920</integer>
+			<key>ypos</key>
+			<integer>275</integer>
+		</dict>
 		<key>849CA7DB-ADC8-49C2-BA44-FF95D8784F3F</key>
 		<dict>
 			<key>xpos</key>
@@ -273,12 +284,12 @@
 			<key>ypos</key>
 			<integer>115</integer>
 		</dict>
-		<key>A4BD8981-F230-45B3-8F2F-D2409DEE18AF</key>
+		<key>B0C07BCE-39D1-489D-8702-6C079ECD5E14</key>
 		<dict>
 			<key>xpos</key>
-			<integer>935</integer>
+			<integer>730</integer>
 			<key>ypos</key>
-			<integer>235</integer>
+			<integer>275</integer>
 		</dict>
 		<key>C8CF71C1-82E4-4878-A076-E1D5078CB9E0</key>
 		<dict>
@@ -286,13 +297,6 @@
 			<integer>500</integer>
 			<key>ypos</key>
 			<integer>135</integer>
-		</dict>
-		<key>C993659F-D180-4311-ABC6-FCED2A17B87B</key>
-		<dict>
-			<key>xpos</key>
-			<integer>730</integer>
-			<key>ypos</key>
-			<integer>235</integer>
 		</dict>
 		<key>FAE14E0D-4C51-4C2D-A529-4E193B0BCC01</key>
 		<dict>
