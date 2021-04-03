@@ -40,8 +40,9 @@ See `sample.yaml` for an example template. Or read on.
 Here's my template for creating a movie review:
 
 ```yaml
-  defaults:
+  variables:
     rating: 3
+  suppress: [day, month, year]
   directory: '~/Notes/Personal/Movies'
   filename: '{{title}}.md'
   contents: |
@@ -66,16 +67,26 @@ Let's break this down.
 
 The name of the template is the name of the file in the `~/.mft` directory, without the suffix. So, if we store the above template in the file `Movie.yaml`, the name of the template is `Movie`. This is the name you use from the command line.
 
-### Default values
+### Variables
 
 ```yaml
-defaults:
+variables:
   rating: 3
 ```
 
-The `defaults` section defines default values for each of the variables used in the Liquid templates. MFT will prompt you for each variable anyway, but it will pre-fill the value if you specify a default. That makes for quick entry.
+The `variables` section defines default values for each of the variables used in the Liquid templates. MFT will prompt you for each variable anyway (unless supressed, see below), but it will pre-fill the value if you specify a value. That makes for quick entry.
 
 The variables `day`, `month` and `year` have automatic defaults, for today's date.
+
+### Suppressing dialog boxes
+
+In some cases you have variables with default values that you don't want to be reminded of, you can suppress them. In that case MFT won't prompt you for them and the default value will be used as is.
+
+```yaml
+suppress: day, month, year    
+```
+
+In this case I'm happy with the default date (today) and I don't want to be able to change them.
 
 ### Directory
 
@@ -114,15 +125,15 @@ Note that the filename is sanitized, replacing all characters that are not valid
     #Movie
 ```
 
-This is the template for the file contents. It contains five variables: `title` and `rating`, `day`, `month` and `year`. The first one, `title` was already used in the filename. MFT will prompt you for it only once. The `rating` is used to generate a *starbar*. The last three variables were already mentioned: these get default values from the current date.
+This is the template for the file contents. It contains five variables: `title` and `rating`, `day`, `month` and `year`. The first one, `title` was already used in the filename. MFT will prompt you for it only once. The `rating` is used to generate a *starbar*. The last three variables were already mentioned: these get default values from the current date and prompting for them is suppressed.
 
 ### Putting it all together
 
-Let's say I watched [1917](https://www.imdb.com/title/tt8579674) yesterday, and I want to write a short review of it.
+Let's say I just watched [1917](https://www.imdb.com/title/tt8579674) and I want to write a short review of it.
 
 I run `mft Movie`
 
-MFT will prompt me for the title, rating, day, month and year. All except the title have default values. I change the rating from 3 to 4 and the day from today to yesterday. 
+MFT will prompt me for the title and the rating. I change the default rating from 3 to 4. 
 
 This leaves me with a file `1917.md` with the following contents:
 

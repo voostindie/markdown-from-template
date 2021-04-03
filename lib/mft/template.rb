@@ -7,19 +7,20 @@ module MFT
         filename: Liquid::Template.parse(config['filename']),
         contents: Liquid::Template.parse(config['contents'])
       }
-      @defaults = config['defaults'] || {}
+      @defaults = config['variables'] || {}
       @defaults['day'] = Date.today.day.to_s.rjust(2, '0')
       @defaults['month'] = Date.today.month.to_s.rjust(2, '0')
       @defaults['year'] = Date.today.year.to_s
+      @suppress = config['suppress'] || []
       @variables = extract_variables(@templates.values)
     end
 
     def extract_variables(templates)
       templates.map do |template|
         template.root.nodelist
-          .select { |n| n.is_a?(Liquid::Variable) }
-          .select { |v| v.name.is_a?(Liquid::VariableLookup) }
-          .map { |v| v.name.name }
+                .select { |n| n.is_a?(Liquid::Variable) }
+                .select { |v| v.name.is_a?(Liquid::VariableLookup) }
+                .map { |v| v.name.name }
       end.flatten.uniq
     end
 
@@ -34,14 +35,18 @@ module MFT
     def collect_values
       context = {}
       @variables.each do |variable|
-        command = "osascript -e 'display dialog \"Enter #{variable}\" " +
-          "default answer \"#{@defaults[variable]}\" " +
-          "with title \"New #{@name}\"'"
-        output = `#{command}`
-        if output =~ /^button returned:OK, text returned:(.*)$/
-          context[variable] = $1.strip
+        if @suppress.include?(variable) && !@defaults[variable].nil?
+          context[variable] = @defaults[variable]
         else
-          raise 'Unexpected output or you cancelled, so we\'re stopping: ' + output
+          command = "osascript -e 'display dialog \"Enter #{variable}\" " +
+            "default answer \"#{@defaults[variable]}\" " +
+            "with title \"New #{@name}\"'"
+          output = `#{command}`
+          if output =~ /^button returned:OK, text returned:(.*)$/
+            context[variable] = $1.strip
+          else
+            raise 'Unexpected output or you cancelled, so we\'re stopping: ' + output
+          end
         end
       end
       context
