@@ -74,15 +74,15 @@ variables:
   rating: 3
 ```
 
-The `variables` section defines default values for each of the variables used in the Liquid templates. MFT will prompt you for each variable anyway (unless supressed, see below), but it will pre-fill the value if you specify a value. That makes for quick entry.
+The `variables` section defines default values for each of the variables used in the Liquid templates. MFT will prompt you for each variable anyway (unless suppressed, see below), but it will pre-fill the value if you specify a value. That makes for quick entry.
 
 The variables `day`, `month` and `year` have automatic defaults, for today's date.
 
 ### PRO TIP: Setting values from scripts
 
-If you really know what you're doing, you can set variable to the output of scripts. This offers a lot of flexibility, but also opens up Pandora's box, so be careful.
+If you really know what you're doing, you can set variables to the output of scripts. This offers a lot of flexibility, but also opens up Pandora's box, so be careful.
 
-To run a script, simply set it as the value of a variable, surrounded with backticks:
+To run a script, simply define it as the value of a variable, surrounded with backticks:
 
 ```yaml
 variables:
@@ -93,13 +93,13 @@ This will set the variable `rating` to, in this case, a random number from 1 to 
 
 ### Suppressing dialog boxes
 
-In some cases you have variables with default values that you don't want to be reminded of, you can suppress them. In that case MFT won't prompt you for them and the default value will be used as is.
+In cases you have variables with default (or computed) values that you don't want to be reminded of, you can suppress them. In that case MFT won't prompt you for them and the default value will be used as is.
 
 ```yaml
 suppress: [day, month, year]    
 ```
 
-In this case I'm happy with the default date (today) and I don't want to be able to change them.
+In this case I'm happy with the default date (today) and I don't want to be able to change it.
 
 ### Directory
 
