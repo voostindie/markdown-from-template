@@ -4,6 +4,9 @@
 
 This is a simple tool to create Markdown files at specific locations on your filesystem from [Liquid](https://shopify.github.io/liquid/) templates. This tool prompts you for each variable in the used template, creates a file and returns the path to the file just created.
 
+(In hindsight I should probably have called this tool "TFT: Text from Template", because there's nothing special for Markdown in it. I might
+just do that in the future.)
+
 ## Prerequisites
 
 A working Mac running an actual version of macOS.
@@ -30,17 +33,16 @@ If you want the list in Alfred's JSON format instead, run `mft -a` or `mft --alf
 
 ## Creating templates
 
-All templates are in a single YAML file, called `templates.yaml` in the root of this tool. When you clone the repository there's nothing there, so the tool won't work. You have to create this file first.
+All templates are YAML files, one per template, in the directory `~/.mft`. 
 
-See `sample.yaml` for an example. Or read on.
+See `sample.yaml` for an example template. Or read on.
 
 Here's my template for creating a movie review:
 
 ```yaml
-movie:
   defaults:
     rating: 3
-  directory: '~/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/Movies'
+  directory: '~/Notes/Personal/Movies'
   filename: '{{title}}.md'
   contents: |
     # {{title}}
@@ -62,11 +64,7 @@ Let's break this down.
 
 ### Template name
 
-```yaml
-movie:
-```
-
-This is the name of the template. Every template has a unique name. This is the name you use from the command line.
+The name of the template is the name of the file in the `~/.mft` directory, without the suffix. So, if we store the above template in the file `Movie.yaml`, the name of the template is `Movie`. This is the name you use from the command line.
 
 ### Default values
 
@@ -82,12 +80,10 @@ The variables `day`, `month` and `year` have automatic defaults, for today's dat
 ### Directory
 
 ```yaml
-directory: '~/Library/Mobile Documents/27N4MQEA55~pro~writer/Documents/Movies'
+directory: '~/Notes/Personal/Movies'
 ```
 
 This specifies in which directory the output of the template needs to be stored. This value is a template, so you can make the directory dynamic if you want.
-
-In my case, this points to a subdirectory in [iA Writer](https://ia.net/writer)'s  iCloud directory.
 
 ### Filename
 
@@ -124,11 +120,11 @@ This is the template for the file contents. It contains five variables: `title` 
 
 Let's say I watched [1917](https://www.imdb.com/title/tt8579674) yesterday, and I want to write a short review of it.
 
-I run `mft movie`
+I run `mft Movie`
 
 MFT will prompt me for the title, rating, day, month and year. All except the title have default values. I change the rating from 3 to 4 and the day from today to yesterday. 
 
-This leaves me with a file `1917.md` opened in iA Writer (my default Markdown editor), with the following contents:
+This leaves me with a file `1917.md` with the following contents:
 
 ```md
 # 1917
@@ -146,7 +142,7 @@ This leaves me with a file `1917.md` opened in iA Writer (my default Markdown ed
 
 ## Alfred workflow
 
-I use [Alfred](https://www.alfredapp.com) extensively. So naturally I wrote a workflow for this tool. It's in the `alfred` subfolder and it's extremely simple: it lists the available templates and then fires off `mft` with the one you selected.
+I use [Alfred](https://www.alfredapp.com) extensively. So naturally I wrote a workflow for this tool. It's in the `alfred` subfolder and it's extremely simple: it lists the available templates and then fires off `mft` with the one you selected. If a file has been written, the workflow opens it in Obsidian for editing.
 
 To install this in Alfred, this is what I do:
 
@@ -156,3 +152,5 @@ To install this in Alfred, this is what I do:
 ```
 
 To use a custom Ruby version, configure the workflow environment variable `RUBY_PATH` by pointing it to the directory Ruby is in. In my case, that's `/Users/vincent/.rbenv/shims`.
+
+The editor is currently hardcoded to be Obsidian.

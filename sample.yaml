@@ -1,5 +1,5 @@
-# Here's a single template example. Just copy-paste to
-# templates.yaml and adapt to your liking.
+# Here's a single template example. Just copy-paste into
+# ~/.mft and adapt to your liking.
 #
 # The values for the directory, filename and contents are
 # all Liquid templates. You can use any variable you want.
@@ -11,17 +11,14 @@
 #
 # For other variables you can optionally define your own defaults,
 # as shown in the example below
-template:
-  defaults:
-    title: 'Default Title'
-  directory: '~/Notes'
-  filename: '{{title}}.md'
-  contents: |
-    # {{title}}
+defaults:
+  title: 'Default Title'
+directory: '~/Notes'
+filename: '{{title}}.md'
+contents: |
+  # {{title}}
 
-    ## Dates
+  ## Dates
 
-    - {{day}}-{{month}}-{{year}}
-
-    #Tag
+  - {{day}}-{{month}}-{{year}}
 
