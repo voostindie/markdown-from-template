@@ -15,17 +15,14 @@ module MFT
         exit
       end
 
-      templates = Dir.children(templates_dir)
-                     .select {|f|f.end_with?('.yaml') && File.file?(File.join(templates_dir, f))}
-                     .map {|f|File.basename(f, '.yaml')}
-                     .sort
-
       if arguments[0] == '-l' || arguments[0] == '--list'
+        templates = load_templates(templates_dir)
         puts templates.join("\n")
         exit
       end
 
       if arguments[0] == '-a' || arguments[0] == '--alfred'
+        templates = load_templates(templates_dir)
         items = templates.map {|t|
           {
             :uid => t,
@@ -45,6 +42,15 @@ module MFT
 
       template = YAML.load_file(template_file)
       puts Template.new(arguments[0], template).render
+    end
+
+    private
+
+    def load_templates(templates_dir)
+      Dir.children(templates_dir)
+         .select { |f| f.end_with?('.yaml') && File.file?(File.join(templates_dir, f)) }
+         .map { |f| File.basename(f, '.yaml') }
+         .sort
     end
   end
 end

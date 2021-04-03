@@ -96,7 +96,7 @@ This will set the variable `rating` to, in this case, a random number from 1 to 
 In some cases you have variables with default values that you don't want to be reminded of, you can suppress them. In that case MFT won't prompt you for them and the default value will be used as is.
 
 ```yaml
-suppress: day, month, year    
+suppress: [day, month, year]    
 ```
 
 In this case I'm happy with the default date (today) and I don't want to be able to change them.
