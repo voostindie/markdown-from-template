@@ -35,7 +35,7 @@ module MFT
     def collect_values
       context = {}
       @variables.each do |variable|
-        value = (@defaults[variable] || '').strip
+        value = (@defaults[variable].to_s || '').strip
         if value.start_with?('`') && value.end_with?('`')
           script = value[1...-1]
           value = `#{script}`.strip
